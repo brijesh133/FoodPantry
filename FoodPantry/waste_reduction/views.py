@@ -4,5 +4,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 def waste_reduction(request):
-	return HttpResponse("Waste Reduction Page")
+	return render(request, "waste_reduction/waste.html")
 

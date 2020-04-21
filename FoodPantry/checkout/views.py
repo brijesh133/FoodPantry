@@ -4,5 +4,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 def checkout(request):
-	return HttpResponse("Check Out Page")
+	return render(request, "checkout/checkout.html")
 
