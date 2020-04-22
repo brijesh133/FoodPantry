@@ -1,0 +1,17 @@
+language: python
+
+python:
+  - "3.8.1"
+
+services:
+  - sqlite
+
+env:
+  - DJANGO=2.2.5 DB=sqlite
+
+install:
+  - pip install -r requirements.txt
+
+
+script:
+  - python manage.py test
