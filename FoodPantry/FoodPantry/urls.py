@@ -24,10 +24,19 @@ from waste_reduction import views as waste_reduction_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', dashboard_views.dashboard, name='dashboard'),
+    # path('dashboard', dashboard_views.dashboard, name='dashboard'),
     path('checkout/', checkout_views.checkout, name='checkout'),
     path('impact/', impact_measurement_views.impact_measurement, name='impact'),
-    path('inventory/', inventory_views.inventory, name='inventory'),
+
+
+    path('inventory/', inventory_views.inventory_view, name='inventory_view'),
+    path('update/<str:pk>/', inventory_views.update, name='update'),
+    path('remove/', inventory_views.remove, name='remove'),
+
+    path('', dashboard_views.user_login, name='user_login'),
+    path('logout/', dashboard_views.user_logout, name='logout'),
+    path('join/', dashboard_views.join, name='join'),
+
     path('provider/', provider_views.provider, name='provider'),
     path('waste/', waste_reduction_views.waste_reduction, name='waste')
 ]
