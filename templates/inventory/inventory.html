@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% include "dashboard/shared_links.html" %}
+	<title>Inventory</title>
+</head>
+<body>
+	{% include "dashboard/navigation_bar.html" %}
+<h1>Inventory Page</h1>
+{% load static %}
+<script src="{%static 'JS/common.js' %}"></script>
+<script>
+function confirmDeleteModal(id) {
+    $('#deleteModal').modal();
+    $('#deleteButton').html('<a href="/remove/?id='+id+'" class="btn btn-danger" onclick="return closeDeleteModal('+id+')">Delete</a>');
+   }
+   
+   
+   function closeDeleteModal(id) {
+    $('#deleteModal').modal('hide');
+    return true
+   }
+
+</script>
+ <div id="deleteModal" class="modal fade" role='dialog'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Delete Item</h4>
+			</div>
+		<div class="modal-body">
+			<p>Do you really want to delete this Item?</p>
+	</div>
+		<div class="modal-footer">
+			<a href="/tasks/">
+			<button type="button" class="btn btn-default" datadismiss="modal">Cancel</button>
+			</a>
+			<span id= 'deleteButton'></span>
+		</div>
+	</div>
+	</div>
+</div>
+
+<table bgcolor="white" class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Item Name</th>
+      <th scope="col">Received Date</th>
+      <th scope="col">Expiry Date</th>
+      <th scope="col">Price</th>
+	  <th scope="col">Quantity</th>
+	  <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for each in item %}
+    <tr>
+	    
+    				<td>{{each.name}}</td>
+					<td>{{each.registration_D}}</td>
+					<td>{{each.expiry_D}}</td>
+					<td>{{each.price}}</td>
+					<td>{{each.quantity}}</td>
+
+
+						{% comment %} {% if  in.task_Done == True %}
+    				<td>Yes</td>
+    			{% elif in.task_Done == False %}
+    				<td>No</td>
+					{% endif %}  {% endcomment %}
+					    				<td>                        <a class="btn btn-success" href="{% url 'update' each.id %}">Edit</a>
+					<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>
+                   {% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}
+    				</td> 
+
+    	</tr>
+		 		{% endfor %}
+  </tbody>
+</table>
+
+<div class="center-column">
+	<form method="POST" action="/inventory/">
+		{% csrf_token %}
+    {{item_data.name}}
+    {{item_data.expiry_D}}
+	{{item_data.price}}
+    {{item_data.quantity}}
+		<input class="btn btn-info" type="submit" name="Add Item">
+	</form>
+
+
+</body>
+</html>

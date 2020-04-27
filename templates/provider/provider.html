@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% include "dashboard/shared_links.html" %}
+	<title>Provider</title>
+</head>
+<body>
+	{% include "dashboard/navigation_bar.html" %}
+<h1>Provider Page</h1>
+ {% load static %}
+<script src="{%static 'JS/common.js' %}"></script>
+{% comment %} <script>
+function confirmDeleteModal(id) {
+    $('#deleteModal').modal();
+    $('#deleteButton').html('<a href="/remove/?id='+id+'" class="btn btn-danger" onclick="return closeDeleteModal('+id+')">Delete</a>');
+   }
+   
+   
+   function closeDeleteModal(id) {
+    $('#deleteModal').modal('hide');
+    return true
+   }
+
+</script>
+ <div id="deleteModal" class="modal fade" role='dialog'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Delete donor</h4>
+			</div>
+		<div class="modal-body">
+			<p>Do you really want to delete this donor?</p>
+	</div>
+		<div class="modal-footer">
+			<a href="/tasks/">
+			<button type="button" class="btn btn-default" datadismiss="modal">Cancel</button>
+			</a>
+			<span id= 'deleteButton'></span>
+		</div>
+	</div>
+	</div>
+</div> {% endcomment %}
+
+ <table bgcolor="white" class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Donor Name</th>
+      <th scope="col">Donor Status</th>
+      <th scope="col">Anonymous Status</th>
+
+    </tr>
+  </thead>
+  <tbody>
+{% for each in donor %}
+    <tr>
+	    
+    				<td>{{each.donor_name}}</td>
+					{% comment %} <td>{{each.donor_status}}</td>
+					<td>{{each.anonymous_status}}</td> {% endcomment %}
+
+					 {% if  each.donor_status == True %}
+    				<td>Organization</td>
+    			{% elif each.donor_status == False %}
+    				<td>Individual</td>
+					{% endif %} 
+
+				{% if  each.anonymous_status == True %}
+    				<td>Yes</td>
+    			{% elif each.anonymous_status == False %}
+    				<td>No</td>
+					{% endif %} 
+
+
+				 
+					    				 {% comment %} <td>                        <a class="btn btn-success" href="{% url 'update' each.id %}">Edit</a>
+					<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>   {% endcomment %}
+                   {% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a>  {% endcomment %}
+    			 </td> 
+
+    	</tr>
+		 		{% endfor %}
+  </tbody>
+</table>
+
+<div class="center-column">
+	<form method="POST" action="/provider/">
+		{% csrf_token %}
+    				{{donor_data.donor_name}}
+					{{donor_data.donor_status}}
+					{{donor_data.anonymous_status}}
+		<input class="btn btn-info" type="submit" name="Add donor">
+	</form>
+
+
+</body>
+</html> 
