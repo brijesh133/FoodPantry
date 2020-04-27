@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% include "dashboard/shared_links.html" %}
+	<title>Join</title>
+</head>
+<body>
+	{% include "dashboard/navigation_bar.html" %}  
+   
+
+
+<br>
+  <div class="login-page">
+    <div class="form">
+      {% if registered %}
+        <h1>Thank you for registering!</h1>
+        	<a href="/">
+		<button type="submit" class="btn btn-info">Back to Login</button>
+		</a>
+      {% else %}
+        <h1>Register</h1>
+
+        <form method="POST">
+          {% csrf_token %}
+          {{ user_form.as_p }}
+          
+        <button type="submit" class="btn btn-primary" value = "Join">Join</button>
+       
+        <p class="message">Already registered? <a href="{% url 'user_login' %}">Sign In</a></p>
+        </form>
+
+      {% endif %}
+
+    </div>
+
+  </div>
