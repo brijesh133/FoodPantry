@@ -40,7 +40,6 @@ function confirmDeleteModal(id) {
 	</div>
 	</div>
 </div> {% endcomment %}
-
  <table bgcolor="white" class="table table-bordered">
   <thead>
     <tr>
@@ -55,24 +54,11 @@ function confirmDeleteModal(id) {
     <tr>
 	    
     				<td>{{each.donor_name}}</td>
-					{% comment %} <td>{{each.donor_status}}</td>
-					<td>{{each.anonymous_status}}</td> {% endcomment %}
-
-					 {% if  each.donor_status == True %}
-    				<td>Organization</td>
-    			{% elif each.donor_status == False %}
-    				<td>Individual</td>
-					{% endif %} 
-
-				{% if  each.anonymous_status == True %}
-    				<td>Yes</td>
-    			{% elif each.anonymous_status == False %}
-    				<td>No</td>
-					{% endif %} 
-
-
-				 
-					    				 {% comment %} <td>                        <a class="btn btn-success" href="{% url 'update' each.id %}">Edit</a>
+					<td>{{each.donor_status}}</td>
+					<td>{{each.anonymous_status}}</td>
+					{% comment %} 
+					<td>                       
+					<a class="btn btn-success" href="{% url 'update' each.id %}">Edit</a>
 					<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>   {% endcomment %}
                    {% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a>  {% endcomment %}
     			 </td> 
@@ -81,15 +67,23 @@ function confirmDeleteModal(id) {
 		 		{% endfor %}
   </tbody>
 </table>
-
+<div class="form">
 <div class="center-column">
 	<form method="POST" action="/provider/">
 		{% csrf_token %}
-    				{{donor_data.donor_name}}
+
+					{{donor_data.donor_name}}
+					<p>Donor Status:</p>
 					{{donor_data.donor_status}}
+					<p>Anonymous Status:</p>
 					{{donor_data.anonymous_status}}
-		<input class="btn btn-info" type="submit" name="Add donor">
+					<br>
+					<br>
+
+
+		<input class="btn btn-primary" type="submit" name="Add donor">
 	</form>
+</div>
 
 
 </body>
