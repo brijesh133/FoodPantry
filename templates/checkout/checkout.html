@@ -6,6 +6,82 @@
 </head>
 <body>
 	{% include "dashboard/navigation_bar.html" %}
-<h1>Check Out Page</h1>
+<h1>Check Out Page</h1>'{% load static %}
+<script src="{%static 'JS/common.js' %}"></script>
+<script>
+function confirmDeleteModal(id) {
+    $('#deleteModal').modal();
+    $('#deleteButton').html('<a href="/remove_co/?id='+id+'" class="btn btn-danger" onclick="return closeDeleteModal('+id+')">Delete</a>');
+   }
+   
+   
+   function closeDeleteModal(id) {
+    $('#deleteModal').modal('hide');
+    return true
+   }
+
+</script>
+ <div id="deleteModal" class="modal fade" role='dialog'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Delete Item</h4>
+			</div>
+		<div class="modal-body">
+			<p>Do you really want to delete this Item?</p>
+	</div>
+		<div class="modal-footer">
+			<a href="/checkout/">
+			<button type="button" class="btn btn-default" datadismiss="modal">Cancel</button>
+			</a>
+			<span id= 'deleteButton'></span>
+		</div>
+	</div>
+	</div>
+</div>
+
+<table bgcolor="white" class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Student ID</th>
+      <th scope="col">Checkout Date</th>
+      <th scope="col">Item Name</th>
+      <th scope="col">Quantity</th>
+	  <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+{% for each in cout %}
+    <tr>
+	    
+
+					<td>{{each.student_id}}</td>
+					<td>{{each.checkout_date}}</td>
+					<td>{{each.item_in_inventory}}</td>
+					<td>{{each.quantity}}</td>
+
+
+
+					    			<td>                        <a class="btn btn-success" href="{% url 'update_co' each.id %}">Edit</a>
+					<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>
+                   {% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}
+    				</td> 
+
+    	</tr>
+		 		{% endfor %}
+  </tbody>
+</table>
+
+<div class="center-column">
+	<form method="POST" action="/checkout/">
+		{% csrf_token %}
+	{{cout_data.item_in_inventory}}
+    {{cout_data.student_id}}
+    {{cout_data.checkout_date}}
+    {{cout_data.quantity}}
+		<input class="btn btn-info" type="submit" name="Checkout">
+	</form>
+
 </body>
 </html>

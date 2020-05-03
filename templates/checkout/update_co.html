@@ -1,0 +1,29 @@
+
+<html>
+<head>
+	{% include "dashboard/shared_links.html" %}
+	<title>Checkout</title>
+</head>
+<body>
+	{% include "dashboard/navigation_bar.html" %}
+
+
+<h3>Edit Checkout Item</h3>
+
+<div class="container">
+    <div class = "jumbotron">
+      <h1>Edit Checkout Item</h1>
+      <form method="POST" action="">
+ 	{{form}}
+        {% csrf_token %}
+        <br>
+        <button type="submit" class="btn btn-primary" name = "Edit_Task">Update</button>
+                <a href="/checkout/">
+        	<button type="submit" class="btn btn-primary" value="Cancel" name = "Cancel">Cancel</button>
+      </form>
+
+        </a>
+    </div>
+  </div>
+</body>
+</html>

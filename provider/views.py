@@ -19,8 +19,8 @@ def provider_view(request):
 	context = {'donor':donor,'donor_data':donor_data}
 	return render(request, 'provider/provider.html',context)
 
-def update(request, pk):
-	donor = provider.objects.get(id=pk)
+def update_pro(request, donor_name):
+	donor = provider.objects.get(id=donor_name)
 
 	form = provider_form(instance=donor)
 
@@ -32,10 +32,10 @@ def update(request, pk):
 
 	context = {'form':form}
 
-	return render(request, 'provider/update.html', context)
+	return render(request, 'provider/update_pro.html', context)
 
 
-def remove(request):
+def remove_pro(request):
 		donor_id = request.GET['id']  
 		donor = provider.objects.get(id=donor_id)
 		donor.delete()
