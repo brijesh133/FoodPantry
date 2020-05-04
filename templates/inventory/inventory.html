@@ -32,7 +32,7 @@ function confirmDeleteModal(id) {
 			<p>Do you really want to delete this Item?</p>
 	</div>
 		<div class="modal-footer">
-			<a href="/tasks/">
+			<a href="/inventory/">
 			<button type="button" class="btn btn-default" datadismiss="modal">Cancel</button>
 			</a>
 			<span id= 'deleteButton'></span>
@@ -81,6 +81,7 @@ function confirmDeleteModal(id) {
 <div class="center-column">
 	<form method="POST" action="/inventory/">
 		{% csrf_token %}
+	{{item_data.donor}}	
     {{item_data.name}}
     {{item_data.expiry_D}}
 	{{item_data.price}}

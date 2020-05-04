@@ -9,10 +9,10 @@
 <h1>Provider Page</h1>
  {% load static %}
 <script src="{%static 'JS/common.js' %}"></script>
-{% comment %} <script>
+ <script>
 function confirmDeleteModal(id) {
     $('#deleteModal').modal();
-    $('#deleteButton').html('<a href="/remove/?id='+id+'" class="btn btn-danger" onclick="return closeDeleteModal('+id+')">Delete</a>');
+    $('#deleteButton').html('<a href="/remove_pro/?id='+id+'" class="btn btn-danger" onclick="return closeDeleteModal('+id+')">Delete</a>');
    }
    
    
@@ -32,20 +32,21 @@ function confirmDeleteModal(id) {
 			<p>Do you really want to delete this donor?</p>
 	</div>
 		<div class="modal-footer">
-			<a href="/tasks/">
+			<a href="/provider/">
 			<button type="button" class="btn btn-default" datadismiss="modal">Cancel</button>
 			</a>
 			<span id= 'deleteButton'></span>
 		</div>
 	</div>
 	</div>
-</div> {% endcomment %}
+</div> 
  <table bgcolor="white" class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Donor Name</th>
       <th scope="col">Donor Status</th>
       <th scope="col">Anonymous Status</th>
+	  <th scope="col">Action</th>
 
     </tr>
   </thead>
@@ -56,12 +57,13 @@ function confirmDeleteModal(id) {
     				<td>{{each.donor_name}}</td>
 					<td>{{each.donor_status}}</td>
 					<td>{{each.anonymous_status}}</td>
-					{% comment %} 
-					<td>                       
-					<a class="btn btn-success" href="{% url 'update' each.id %}">Edit</a>
-					<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>   {% endcomment %}
-                   {% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a>  {% endcomment %}
-    			 </td> 
+			
+				 {% comment %} <td>                       <a class="btn btn-success" href="{% url 'update_pro' each.id %}">Edit</a> 
+					         <td>   <a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a> 
+                   
+				   </td> {% endcomment %}
+				 
+    			 
 
     	</tr>
 		 		{% endfor %}

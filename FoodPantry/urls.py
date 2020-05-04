@@ -26,7 +26,11 @@ from waste_reduction import views as waste_reduction_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', dashboard_views.dashboard, name='dashboard'),
-    path('checkout/', checkout_views.checkout, name='checkout'),
+
+    path('checkout/', checkout_views.checkout_view, name='checkout_view'),
+    path('update_co/<str:pk>/', checkout_views.update_co, name='update_co'),
+    path('remove_co/', checkout_views.remove_co, name='remove_co'),
+
     path('impact/', impact_measurement_views.impact_measurement, name='impact'),
 
 
@@ -39,5 +43,8 @@ urlpatterns = [
     path('join/', dashboard_views.join, name='join'),
 
     path('provider/', provider_views.provider_view, name='provider_view'),
+    path('update_pro/<str:pk>/', provider_views.update_pro, name='update_pro'),
+    path('remove_pro/', provider_views.remove_pro, name='remove_pro'),
+
     path('waste/', waste_reduction_views.waste_reduction, name='waste')
 ]

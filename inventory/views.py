@@ -1,5 +1,3 @@
-
-from django.http import HttpResponse
 from inventory.models import *
 from inventory.forms import *
 from django.shortcuts import render,redirect
