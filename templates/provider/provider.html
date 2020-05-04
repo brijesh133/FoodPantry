@@ -58,10 +58,10 @@ function confirmDeleteModal(id) {
 					<td>{{each.donor_status}}</td>
 					<td>{{each.anonymous_status}}</td>
 			
-				 <td>                       <a class="btn btn-success" href="{% url 'update_pro' each.id %}">Edit</a> 
+				 {% comment %} <td>                       <a class="btn btn-success" href="{% url 'update_pro' each.id %}">Edit</a> 
 					         <td>   <a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a> 
                    
-				   </td>
+				   </td> {% endcomment %}
 				 
     			 
 

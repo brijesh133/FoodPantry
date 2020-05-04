@@ -35,7 +35,7 @@ urlpatterns = [
 
 
     path('inventory/', inventory_views.inventory_view, name='inventory_view'),
-    path('update/<str:donor_name>/', inventory_views.update, name='update'),
+    path('update/<str:pk>/', inventory_views.update, name='update'),
     path('remove/', inventory_views.remove, name='remove'),
 
     path('', dashboard_views.user_login, name='user_login'),

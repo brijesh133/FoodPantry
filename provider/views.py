@@ -19,8 +19,8 @@ def provider_view(request):
 	context = {'donor':donor,'donor_data':donor_data}
 	return render(request, 'provider/provider.html',context)
 
-def update_pro(request, donor_name):
-	donor = provider.objects.get(id=donor_name)
+def update_pro(request, pk):
+	donor = provider.objects.get(id=pk)
 
 	form = provider_form(instance=donor)
 
