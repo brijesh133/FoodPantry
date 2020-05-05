@@ -6,7 +6,9 @@
 </head>
 <body>
 	{% include "dashboard/navigation_bar.html" %}
-<h1>Check Out Page</h1>'{% load static %}
+<h1>Check Out</h1>
+
+{% load static %}
 <script src="{%static 'JS/common.js' %}"></script>
 <script>
 function confirmDeleteModal(id) {
@@ -39,8 +41,9 @@ function confirmDeleteModal(id) {
 	</div>
 	</div>
 </div>
-
-<table bgcolor="white" class="table table-bordered">
+<div class="container">
+	<div class="jumbotron">
+<table bgcolor="white" class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Student ID</th>
@@ -72,16 +75,24 @@ function confirmDeleteModal(id) {
 		 		{% endfor %}
   </tbody>
 </table>
+	</div>
+</div>
 
+
+
+
+<div class="form">
 <div class="center-column">
 	<form method="POST" action="/checkout/">
 		{% csrf_token %}
+		<label>Select Item</label>
 	{{cout_data.item_in_inventory}}
     {{cout_data.student_id}}
     {{cout_data.checkout_date}}
     {{cout_data.quantity}}
-		<input class="btn btn-info" type="submit" name="Checkout">
+		<!-- <input class="btn btn-info" type="submit" name="Checkout"> -->
+		<button type="submit" class="btn btn-info">Check Out</button>
 	</form>
-
+</div>
 </body>
 </html>

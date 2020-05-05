@@ -5,7 +5,7 @@ from inventory.models import inventory
 class checkout(models.Model):
     item_in_inventory = models.ForeignKey(inventory,on_delete=models.CASCADE,related_name='item_in_inventory')
     student_id = models.CharField(max_length=9)
-    checkout_date = models.DateField()
+    checkout_date = models.DateField(auto_now=True)
     quantity = models.PositiveIntegerField()
     def __str__(self):
           return self.student_id

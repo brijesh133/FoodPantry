@@ -40,8 +40,9 @@ function confirmDeleteModal(id) {
 	</div>
 	</div>
 </div>
-
-<table bgcolor="white" class="table table-bordered">
+<div class="container">
+	<div class="jumbotron">
+<table bgcolor="white" class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Item Name</th>
@@ -77,18 +78,25 @@ function confirmDeleteModal(id) {
 		 		{% endfor %}
   </tbody>
 </table>
+	</div>
+</div>
 
-<div class="center-column">
+<div class="form">
+	
+
+
 	<form method="POST" action="/inventory/">
 		{% csrf_token %}
+		<label>Select Doner:</label>
 	{{item_data.donor}}	
     {{item_data.name}}
     {{item_data.expiry_D}}
 	{{item_data.price}}
     {{item_data.quantity}}
-		<input class="btn btn-info" type="submit" name="Add Item">
+		<!-- <input class="btn btn-info" type="submit" name="Add Item"> -->
+		<button type="submit" class="btn btn-info">Add Item</button>
 	</form>
-
+</div>
 
 </body>
 </html>
