@@ -40,7 +40,9 @@ function confirmDeleteModal(id) {
 	</div>
 	</div>
 </div> 
- <table bgcolor="white" class="table table-bordered">
+<div class="container">
+<div class="jumbotron">
+ <table bgcolor="white" class="table table-striped">
   <thead>
     <tr>
       <th scope="col">Donor Name</th>
@@ -69,24 +71,29 @@ function confirmDeleteModal(id) {
 		 		{% endfor %}
   </tbody>
 </table>
+</div>
+</div>
+<div class="container"> 
 <div class="form">
-<div class="center-column">
-	<form method="POST" action="/provider/">
-		{% csrf_token %}
+	<div class="login-form">
+		<form method="POST" action="/provider/">
+			{% csrf_token %}
 
 					{{donor_data.donor_name}}
-					<p>Donor Status:</p>
+					<label>Donor Status:</label>
 					{{donor_data.donor_status}}
-					<p>Anonymous Status:</p>
+					<label>Anonymous Status:</label>
 					{{donor_data.anonymous_status}}
 					<br>
 					<br>
 
-
-		<input class="btn btn-primary" type="submit" name="Add donor">
+<!-- 
+		<input class="btn btn-info" type="submit" name="Add donor"> -->
+		<button type="submit" class="btn btn-info">Add Doner</button>
 	</form>
 </div>
-
+</div>
+</div>
 
 </body>
 </html> 
