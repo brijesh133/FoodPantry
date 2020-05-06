@@ -43,7 +43,8 @@ function confirmDeleteModal(id) {
 </div>
 <div class="container">
 	<div class="jumbotron">
-<table bgcolor="white" class="table table-striped">
+		<div class="table-wrapper-scroll-y my-custom-scrollbar">	
+			<table bgcolor="white" class="table table-bordered table-striped mb-0">
   <thead>
     <tr>
       <th scope="col">Student ID</th>
@@ -75,6 +76,7 @@ function confirmDeleteModal(id) {
 		 		{% endfor %}
   </tbody>
 </table>
+	</div>
 	</div>
 </div>
 
