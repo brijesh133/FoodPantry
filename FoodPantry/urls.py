@@ -38,7 +38,7 @@ urlpatterns = [
     path('update/<str:pk>/', inventory_views.update, name='update'),
     path('remove/', inventory_views.remove, name='remove'),
 
-    path('dashboard/', dashboard_views.user_login, name='user_login'),
+    path('login/', dashboard_views.user_login, name='user_login'),
     path('logout/', dashboard_views.user_logout, name='logout'),
     path('join/', dashboard_views.join, name='join'),
 
