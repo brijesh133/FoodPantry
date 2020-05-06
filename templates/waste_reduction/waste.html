@@ -7,5 +7,36 @@
 <body>
 	{% include "dashboard/navigation_bar.html" %}
 <h1>Waste Reduction Page</h1>
+
+<div class="container">
+	<div class="jumbotron">
+		<div class="table-wrapper-scroll-y my-custom-scrollbar">	
+<table bgcolor="white" class="table table-bordered table-striped mb-0">
+	<div>Following items are going to expire in next 2 days: </div>
+  <thead>
+    <tr>
+      <th scope="col">Item Name</th>
+      <th scope="col">Received Date</th>
+	  <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for each in expiring_soon %}
+    <tr>
+	    
+    				<td>{{each.name}}</td>
+					<td>{{each.registration_D}}</td>
+					<td>{{each.quantity}}</td>
+    	</tr>
+		 		{% endfor %}
+  </tbody>
+</table>
+	</div>
+</div>
+</div>
+
+
+
+
 </body>
 </html>
