@@ -3,9 +3,77 @@
 <head>
 	{% include "dashboard/shared_links.html" %}
 	<title>Impact Measurement</title>
+	<link rel="stylesheet"
+          href="bower_components/chartist/dist/chartist.min.css">
 </head>
 <body>
 	{% include "dashboard/navigation_bar.html" %}
 <h1>Impact Measurement Page</h1>
+<div>Total Number of checkouts from the foodpantry: {{Total_Checkouts}}</div>
+<div>Total Number of Students benefitted from pantry: {{Unique}}</div>
+<div>Total donation amount of all the food in dollars: $ {{Total_Amount}}</div>
+<div>Total Number of food products donated from pantry: {{Total_Quantity}}</div>
+
+
+<div>
+	<table id="dtDynamicVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="0"
+  width="100%">
+  <thead>
+    <tr>
+      <th class="th-sm">Student ID
+      </th>
+      <th class="th-sm">Item Count
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for key, value in dat.items %}
+    <tr>	
+      <td>{{key}}</td>
+      <td>{{value}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <th>Student ID
+      </th>
+      <th>Item Count
+      </th>
+    </tr>
+  </tfoot>
+</table>
+</div>
+
+<div>Average number of items per students: {{average}}</div>
+<div class="ct-perfect-fourth" id="ct-chart"></div>
+<script>
+
+	var data = {
+  // A labels array that can contain any sort of values
+  labels: [{% for key, value in dat2.items %}
+				'{{key}}',
+			{% endfor %}],
+  // Our series array that contains series objects or in this case series data arrays
+  series: [
+    [{% for key, value in dat2.items %}
+					{{value}},
+				{% endfor %}]
+  ]
+};
+
+	var options = {
+		high : 25,
+		low: 0,
+		onlyInteger: true,
+		scaleMinSpace : 10,
+  		showArea: true,
+  		width: '300px',
+  		height: '200px'
+	};
+
+new Chartist.Line('#ct-chart', data, options);
+</script>
+
 </body>
 </html>

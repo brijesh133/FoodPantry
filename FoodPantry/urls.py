@@ -25,7 +25,7 @@ from waste_reduction import views as waste_reduction_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('dashboard/', dashboard_views.dashboard, name='dashboard'),
+    path('', dashboard_views.dashboard, name='dashboard'),
 
     path('checkout/', checkout_views.checkout_view, name='checkout_view'),
     path('update_co/<str:pk>/', checkout_views.update_co, name='update_co'),
@@ -38,7 +38,7 @@ urlpatterns = [
     path('update/<str:pk>/', inventory_views.update, name='update'),
     path('remove/', inventory_views.remove, name='remove'),
 
-    path('', dashboard_views.user_login, name='user_login'),
+    path('dashboard/', dashboard_views.user_login, name='user_login'),
     path('logout/', dashboard_views.user_logout, name='logout'),
     path('join/', dashboard_views.join, name='join'),
 

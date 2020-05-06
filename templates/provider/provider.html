@@ -78,12 +78,12 @@ function confirmDeleteModal(id) {
 	<div class="login-form">
 		<form method="POST" action="/provider/">
 			{% csrf_token %}
-
+			
+					<label>Anonymous Status:</label>
+					{{donor_data.anonymous_status}}
 					{{donor_data.donor_name}}
 					<label>Donor Status:</label>
 					{{donor_data.donor_status}}
-					<label>Anonymous Status:</label>
-					{{donor_data.anonymous_status}}
 					<br>
 					<br>
 

@@ -12,23 +12,35 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def checkout_view(request):
-		cout = checkout.objects.all()
 		cout_data = checkout_form()
 
 		if (request.method=="POST"):
 			cout_data = checkout_form(request.POST)
+			print("cout_data.is_valid(): ", cout_data.is_valid())
 			if cout_data.is_valid():
+				print("Here")
 				a1 = cout_data.cleaned_data["item_in_inventory"]
 				after = cout_data.cleaned_data["quantity"]
+				student_ids = cout_data.cleaned_data["student_id"]
 				x = inventory.objects.get(name=a1)
 				before = x.quantity
 				final = int(before) - int(after)
-				if final < 0:
+				if final <= 0:
 				   print("Not enough items in inventory")
 				else:
 					x.quantity = final
+					y = checkout()
+					y.item_in_inventory = a1
+					y.item_name = a1
+					y.student_id = student_ids
+					y.quantity = after
+					y.price = float(after) * x.price
+					y.donor = x.donor
 					x.save()
-					cout_data.save()
+					y.save()
+					print(x)
+					print(y)
+		cout = checkout.objects.all()
 		context = {'cout':cout,'cout_data':cout_data}
 		return render(request, "checkout/checkout.html",context)
 
