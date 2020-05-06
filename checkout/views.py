@@ -25,7 +25,7 @@ def checkout_view(request):
 				x = inventory.objects.get(name=a1)
 				before = x.quantity
 				final = int(before) - int(after)
-				if final <= 0:
+				if final < 0:
 				   print("Not enough items in inventory")
 				else:
 					x.quantity = final
@@ -36,8 +36,11 @@ def checkout_view(request):
 					y.quantity = after
 					y.price = float(after) * x.price
 					y.donor = x.donor
-					x.save()
 					y.save()
+					if final == 0:
+						x.delete()
+					else:
+						x.save()
 					print(x)
 					print(y)
 		cout = checkout.objects.all()
