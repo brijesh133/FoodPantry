@@ -7,17 +7,83 @@
           href="bower_components/chartist/dist/chartist.min.css">
 </head>
 <body>
+
+
 	{% include "dashboard/navigation_bar.html" %}
 <h1>Impact Measurement Page</h1>
-<div>Total Number of checkouts from the foodpantry: {{Total_Checkouts}}</div>
-<div>Total Number of Students benefitted from pantry: {{Unique}}</div>
-<div>Total donation amount of all the food in dollars: $ {{Total_Amount}}</div>
-<div>Total Number of food products donated from pantry: {{Total_Quantity}}</div>
+
+<br>
+<br>
 
 
-<div>
-	<table id="dtDynamicVerticalScrollExample" class="table table-striped table-bordered table-sm" cellspacing="0"
-  width="100%">
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+<div class="card h-75" style="width:550px ;">
+  <div class="card-body">
+    <h5 class="card-title" >Statistics:</h5>
+    <br>
+    <p class="card-text" style="font-size: 20px; ">Total Number of checkouts from the foodpantry: {{Total_Checkouts}} items</p>
+      <p class="card-text" style="font-size: 20px; ">Total Number of Students benefitted from pantry: {{Unique}} items</p>
+        <p class="card-text" style="font-size: 20px; ">Total donation amount of all the food in dollars: ${{Total_Amount}}</p>
+          <p class="card-text" style="font-size: 20px; ">Total Number of food products donated from pantry: {{Total_Quantity}} items</p>
+    </div>
+  </div>
+
+
+    </div>
+    <div class="col">
+
+
+  <div class="card h-75" style="width:525px;">
+        <div class="card-body">
+          <h5 class="card-title">Average number of items per student: {{average}} items</h5>
+      <div class="ct-perfect-fourth" id="ct-chart"></div>
+  <script>
+  
+          var data = {
+          // A labels array that can contain any sort of values
+          labels: [{% for key, value in dat2.items %}
+                '{{key}}',
+              {% endfor %}],
+          // Our series array that contains series objects or in this case series data arrays
+          series: [
+            [{% for key, value in dat2.items %}
+                  {{value}},
+                {% endfor %}]
+                ]
+              };
+              
+                var options = {
+                  high : 25,
+                  low: 0,
+                  onlyInteger: true,
+                  scaleMinSpace : 10,
+                    showArea: true,
+                    width: '400px',
+                    height: '250px'
+                };
+  
+      new Chartist.Line('#ct-chart', data, options);
+    </script>
+    </div>
+    </div>
+
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+<div class="container">
+	<div class="jumbotron">
+    <h5 class="card-title text-center" >Student List with number of items</h5>
+<div class="table-wrapper-scroll-y my-custom-scrollbar">	
+  <table bgcolor="white" class="table table-bordered table-striped mb-0" width="100%">
   <thead>
     <tr>
       <th class="th-sm">Student ID
@@ -44,36 +110,16 @@
   </tfoot>
 </table>
 </div>
+	</div>
+  </div>
+</div>
 
-<div>Average number of items per students: {{average}}</div>
-<div class="ct-perfect-fourth" id="ct-chart"></div>
-<script>
 
-	var data = {
-  // A labels array that can contain any sort of values
-  labels: [{% for key, value in dat2.items %}
-				'{{key}}',
-			{% endfor %}],
-  // Our series array that contains series objects or in this case series data arrays
-  series: [
-    [{% for key, value in dat2.items %}
-					{{value}},
-				{% endfor %}]
-  ]
-};
 
-	var options = {
-		high : 25,
-		low: 0,
-		onlyInteger: true,
-		scaleMinSpace : 10,
-  		showArea: true,
-  		width: '300px',
-  		height: '200px'
-	};
 
-new Chartist.Line('#ct-chart', data, options);
-</script>
+
+
+
 
 </body>
 </html>
