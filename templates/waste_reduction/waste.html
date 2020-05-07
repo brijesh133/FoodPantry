@@ -17,6 +17,7 @@
     <tr>
       <th scope="col">Item Name</th>
       <th scope="col">Received Date</th>
+      <th scope="col">Expiry Date</th>
 	  <th scope="col">Quantity</th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
 	    
     				<td>{{each.name}}</td>
 					<td>{{each.registration_D}}</td>
+					<td>{{each.expiry_D}}</td>
 					<td>{{each.quantity}}</td>
     	</tr>
 		 		{% endfor %}
@@ -34,6 +36,56 @@
 	</div>
 </div>
 </div>
+
+
+
+
+
+
+<div class="container">
+	<div class="jumbotron">
+		<div class="table-wrapper-scroll-y my-custom-scrollbar">	
+<table bgcolor="white" class="table table-bordered table-striped mb-0">
+	<div>Following items are already expired and needs to be thrown out: </div>
+  <thead>
+    <tr>
+      <th scope="col">Item Name</th>
+      <th scope="col">Received Date</th>
+      <th scope="col">Expiry Date</th>
+	  <th scope="col">Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for each in already_expired %}
+    <tr>
+	    
+    				<td>{{each.name}}</td>
+					<td>{{each.registration_D}}</td>
+					<td>{{each.expiry_D}}</td>
+					<td>{{each.quantity}}</td>
+    	</tr>
+		 		{% endfor %}
+  </tbody>
+</table>
+	</div>
+</div>
+</div>
+
+
+<div class="form">
+  
+<div>Remove expired products from inventory</div>
+
+  <form method="POST" action="/waste_remove/">
+    {% csrf_token %}
+    <label>Select Item:</label>
+  {{waste_forms.item_name}} 
+    {{waste_forms.quantity}}
+    <!-- <input class="btn btn-info" type="submit" name="Add Item"> -->
+    <button type="submit" class="btn btn-info">Add Item</button>
+  </form>
+</div>
+
 
 
 

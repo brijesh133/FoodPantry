@@ -46,5 +46,6 @@ urlpatterns = [
     path('update_pro/<str:pk>/', provider_views.update_pro, name='update_pro'),
     path('remove_pro/', provider_views.remove_pro, name='remove_pro'),
 
-    path('waste/', waste_reduction_views.waste_reduction, name='waste')
+    path('waste/', waste_reduction_views.waste_reduction, name='waste'),
+    path('waste_remove/', waste_reduction_views.waste_remove, name='waste_remove')
 ]
