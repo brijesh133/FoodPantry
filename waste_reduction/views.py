@@ -8,6 +8,7 @@ from waste_reduction.forms import waste_form
 from waste_reduction.models import wastage
 # Create your views here.
 
+@login_required(login_url='/login/')
 def waste_reduction(request):
     ini_time_for_now = datetime.now().date()
     print("Initial date: ", str(ini_time_for_now))

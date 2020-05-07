@@ -10,6 +10,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required(login_url='/login/')
 def dashboard(request):
 	return render(request, "dashboard/dashboard.html")
 
@@ -71,7 +72,7 @@ def user_login(request):
 
         return render(request, 'dashboard/login.html', {})
 
-@login_required(login_url='/')
+@login_required(login_url='login/')
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('user_login'))
