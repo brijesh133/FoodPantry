@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+   
+  <link rel="stylesheet" type="text/css" href="{%static 'CSS/p1.css' %}">
+    {% include "dashboard/shared_links.html" %}
+    <title>About</title>
+  </head>
+  <body>
+    {% include "dashboard/Navigation_Bar.html" %}
+
+  
+  <br>
+  <h1 class="head">CINS 465: Final Project by Devam Sharma,Sujeet Hiramath and Chetan Kurra</h1>
+  <br>
+  <h2>Food Pantry Project</h2>
+  <br>
+   <ul>
+      	<li>We created a new Django project and the required apps for it, i.e dashboard, waste_management, provider, inventory and impact_measurement. We started with the login and register page. After that the dashboard.html and Navigation_Bar.html to include the navigation bar, and also shared_links.html to include the various link of bootstrap.</li>
+        <li>After proper function of Login and logout, including Registration, It's time to work on the provider app. We created the edit_task page and add_task for it and also added the various functions to implement the tasks app. I also added the Hide complete Tasks checkbox as per the requirement and gave the final touches with the CSS.</li>
+
+        <li>After Making a commmon CSS file for the project and one more CSS for the nav bar, Its easiler to impletmet the CSS in whole project, It also gives the uniformity to pages and the website looks very aesthetic. After completing the dashboard app, we worked the provider app, created tables and implemeted the edit and delete for provider as required for the project.
+        
+        </li>
+        <li>After completing the provider app, we worked on the inventory, so that once a provider is added, we can add items in the inventory by choosing the provider at first. The same delete and edit functions are used in inventory too.</li>
+        <li>Third app, we worked on is the Check out. As items in inventory needs to be checked out by a student, it will transfer the item name and the quantity add in cart will be subtracted from the inventory.</li>
+        <li>With all the functions working, We worked on the app like impact_measurement and waste_management. There apps are for the statistics of the whole food pantry. In the impact_measurement, statistics like average number of items is displayed by chartist.js and the whole table of students and their number of items checked out is displayed.</li>
+       <li>In the waste_management, We made two tables, one of which shows the items which are going to expire in two days and the another one show the expired items, that needs to be dumped in the garbage.</li>
+        <li>(NEEDS TO BE CHANGED) Now with all the apps completed and functioning properly, I needed to present it properly in the homepage. Specifically the tasks and bugget app data. As per the requirement, Chartist.js is the website I took the piechart to tell how many tasks were completed or pending and a bar chart for budget app. The journal app required just to print the data.</li> 	
+   </ul>
+   <br>
+   <br>
+   <br>
+   <br>
+   <h2>About Me</h2>
+   <ul>
+     <li>This project was created by Devam Sharma. I'm a Grad student here at chico state majoring in computer science. I did my bachlors also in computer science from JECRC University, Jaipur. I've also done a frontend internship in my final year of bachlors, which means I also have a knowledge about the typography and color combinations which will make the website look good.
+<li>
+  {% load static %}
+  <img src="{% static 'IMG/Devam.jpg' %}" width="500" height="600">
+</li>
+     </li>
+   </ul>
+ 
+    
+  </div>
+
+  </body>
+</html>

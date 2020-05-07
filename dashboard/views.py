@@ -109,3 +109,8 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('user_login'))
+    
+    
+    
+def about(request):
+    return render(request, 'dashboard/About.html')
