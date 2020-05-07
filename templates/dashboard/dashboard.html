@@ -7,5 +7,40 @@
 <body>
 	{% include "dashboard/navigation_bar.html" %}
 <h1>Dashboard Page</h1>
+
+
+
+
+
+  <div class="card h-75" style="width:525px;">
+        <div class="card-body">
+          <h5 class="card-title">Number of items checkedout by students from pantry in last 10 days:</h5>
+      <div class="ct-perfect-fourth" id="chart1"></div>
+  <script>
+  
+          var data = {
+          // A labels array that can contain any sort of values
+          labels: [{% for key, value in ChartData.items %}
+                '{{key}}',
+              {% endfor %}],
+          // Our series array that contains series objects or in this case series data arrays
+          series: [
+            [{% for key, value in ChartData.items %}
+                  {{value}},
+                {% endfor %}]
+                ]
+              };
+              
+  
+      new Chartist.Bar('#chart1', data);
+    </script>
+    </div>
+    </div>
+
+
+
+
+
+
 </body>
 </html>

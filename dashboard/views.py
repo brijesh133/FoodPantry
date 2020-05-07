@@ -1,18 +1,51 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from dashboard.models import *
-from dashboard.forms import *
+from checkout.models import checkout
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate, login, logout
 import datetime
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from collections import defaultdict
 # Create your views here.
 
 @login_required(login_url='/login/')
 def dashboard(request):
-	return render(request, "dashboard/dashboard.html")
+    dictOfCheckouts = getCheckOutInfo()
+    print(dictOfCheckouts)
+    page_data = {"ChartData":dictOfCheckouts}
+    return render(request, "dashboard/dashboard.html", context=page_data)
+
+
+
+
+def getCheckOutInfo():
+    allcheckoutObj = checkout.objects.all()
+    chart_data = {}
+    chart_data_updated = {}
+    dateset = set()
+
+    for x in allcheckoutObj:
+        dateset.add(x.checkout_date)
+
+    for i in dateset:
+        sum = 0
+        for j in allcheckoutObj:
+            if j.checkout_date == i:
+                sum = sum + 1
+        chart_data[i] = sum
+
+    l = 0
+    chart_data_sorted = sorted(chart_data, key = chart_data.get)
+    for k in chart_data_sorted:
+        print(k.strftime("%d %b %Y "), chart_data[k])
+        chart_data_updated[k.strftime("%d %b %Y ")] = chart_data[k]
+        if l == 10:
+            break
+        l = l + 1
+    return chart_data_updated
+
 
 def join(request):
 

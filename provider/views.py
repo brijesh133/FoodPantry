@@ -16,7 +16,7 @@ def provider_view(request):
 	if donor_data.is_valid():
 			donor_data.save()
 
-	context = {'donor':donor,'donor_data':donor_data}
+	context = {'donor':donor, 'donor_data':donor_data }
 	return render(request, 'provider/provider.html',context)
 
 def update_pro(request, pk):
