@@ -10,9 +10,9 @@
 
 <div class="container">
 	<div class="jumbotron">
+    <h5 class="card-title">Items soon to be expired:</h5>
 		<div class="table-wrapper-scroll-y my-custom-scrollbar">	
 <table bgcolor="white" class="table table-bordered table-striped mb-0">
-	<div>Following items are going to expire in next 2 days: </div>
   <thead>
     <tr>
       <th scope="col">Item Name</th>
@@ -44,9 +44,10 @@
 
 <div class="container">
 	<div class="jumbotron">
+    <h5 class="card-title">Expired items:</h5>
 		<div class="table-wrapper-scroll-y my-custom-scrollbar">	
 <table bgcolor="white" class="table table-bordered table-striped mb-0">
-	<div>Following items are already expired and needs to be thrown out: </div>
+  
   <thead>
     <tr>
       <th scope="col">Item Name</th>
@@ -74,12 +75,13 @@
 
 <div class="form">
   
-<div>Remove expired products from inventory</div>
+<label>Remove expired products from inventory</label>
 
   <form method="POST" action="/waste_remove/">
     {% csrf_token %}
     <label>Select Item:</label>
   {{waste_forms.item_name}} 
+
     {{waste_forms.quantity}}
     <!-- <input class="btn btn-info" type="submit" name="Add Item"> -->
     <button type="submit" class="btn btn-info">Add Item</button>

@@ -26,6 +26,8 @@ from waste_reduction import views as waste_reduction_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', dashboard_views.dashboard, name='dashboard'),
+    path('about/', dashboard_views.about, name='about'),
+
 
     path('checkout/', checkout_views.checkout_view, name='checkout_view'),
     path('update_co/<str:pk>/', checkout_views.update_co, name='update_co'),
