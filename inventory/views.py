@@ -27,6 +27,7 @@ def inventory_view(request):
 
 
 def update(request, pk):
+	print("pk: ", pk)
 	item = inventory.objects.get(id=pk)
 
 	form = inventory_form(instance=item)

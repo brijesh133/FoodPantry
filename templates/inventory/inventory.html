@@ -70,10 +70,9 @@ function confirmDeleteModal(id) {
     			{% elif in.task_Done == False %}
     				<td>No</td>
 					{% endif %}  {% endcomment %}
-					    				<td>                        <a class="btn btn-success" href="{% url 'update' each.id %}">Edit</a>
-					<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>
-                   {% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}
-    				</td> 
+	<td>
+	<a class="btn btn-success" href="{% url 'update' each.id %}">Edit</a>
+	<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>{% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}</td> 
 
     	</tr>
 		 		{% endfor %}
