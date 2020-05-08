@@ -1,44 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	{% include "dashboard/shared_links.html" %}
-	<title>Provider</title>
+    {% include "dashboard/shared_links.html" %}
+    <title>Provider</title>
 </head>
 <body>
-	{% include "dashboard/navigation_bar.html" %}
+    {% include "dashboard/navigation_bar.html" %}
 <h1>Provider Page</h1>
  {% load static %}
 <script src="{%static 'JS/common.js' %}"></script>
- <script>
-function confirmDeleteModal(id) {
-    $('#deleteModal').modal();
-    $('#deleteButton').html('<a href="/remove_pro/?id='+id+'" class="btn btn-danger" onclick="return closeDeleteModal('+id+')">Delete</a>');
-   }
-   
-   
-   function closeDeleteModal(id) {
-    $('#deleteModal').modal('hide');
-    return true
-   }
-
-</script>
- <div id="deleteModal" class="modal fade" role='dialog'>
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Delete donor</h4>
-			</div>
-		<div class="modal-body">
-			<p>Do you really want to delete this donor?</p>
-	</div>
-		<div class="modal-footer">
-			<a href="/provider/">
-			<button type="button" class="btn btn-default" datadismiss="modal">Cancel</button>
-			</a>
-			<span id= 'deleteButton'></span>
-		</div>
-	</div>
-	</div>
+     
 </div> 
 <div class="container">
 <div class="jumbotron">
@@ -47,50 +18,65 @@ function confirmDeleteModal(id) {
     <tr>
       <th scope="col">Donor Name</th>
       <th scope="col">Donor Status</th>
-      <th scope="col">Anonymous Status</th>
-	  <th scope="col">Action</th>
+      <th scope="col">Action</th>
 
     </tr>
   </thead>
   <tbody>
 {% for each in donor %}
     <tr>
-	    
-    				<td>{{each.donor_name}}</td>
-					<td>{{each.donor_status}}</td>
-					<td>{{each.anonymous_status}}</td>
-			
-				 {% comment %} <td>                       <a class="btn btn-success" href="{% url 'update_pro' each.id %}">Edit</a> 
-					         <td>   <a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a> 
-                   
-				   </td> {% endcomment %}
-				 
-    			 
+        <td>{{each.user_name}}</td>
+        <td>{{each.donor_status}}</td>
+        <td>
+            <a class="btn btn-success" href="{% url 'update_pro' each.donor_name %}">Edit</a> 
 
-    	</tr>
-		 		{% endfor %}
+            <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deleteModal{{ each.donor_name }}">Delete</a>
+            <!-- Delete model box for each row in for loop-->
+            <div class="modal fade" id="deleteModal{{ each.donor_name }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Delete Task</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Do you really waht to delete this Sponsor ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a href="{% url 'remove_pro' %}?name={{ each.donor_name }}">
+                            <button type="button" class="btn btn-primary">Delete</button>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- Ends here -->
+        </td>
+        </tr>
+{% endfor %}
   </tbody>
 </table>
 </div>
 </div>
 <div class="container"> 
 <div class="form">
-	<div class="login-form">
-		<form method="POST" action="/provider/">
-			{% csrf_token %}
-			
-					<label>Anonymous Status:</label>
-					{{donor_data.anonymous_status}}
-					{{donor_data.donor_name}}
-					<label>Donor Status:</label>
-					{{donor_data.donor_status}}
-					<br>
-					<br>
+    <div class="login-form">
+        <form method="POST" action="/provider/">
+            {% csrf_token %}
+                    {{donor_data.donor_name}}
+                    {{donor_data.user_name}}
+                    <label>Donor Status:</label>
+                    {{donor_data.donor_status}}
+                    <br>
+                    <br>
 
 <!-- 
-		<input class="btn btn-info" type="submit" name="Add donor"> -->
-		<button type="submit" class="btn btn-info">Add Doner</button>
-	</form>
+        <input class="btn btn-info" type="submit" name="Add donor"> -->
+        <button type="submit" class="btn btn-info">Add Doner</button>
+    </form>
 </div>
 </div>
 </div>

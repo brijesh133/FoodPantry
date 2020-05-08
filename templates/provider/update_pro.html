@@ -1,11 +1,11 @@
 
 <html>
 <head>
-	{% include "dashboard/shared_links.html" %}
-	<title>Provider</title>
+  {% include "dashboard/shared_links.html" %}
+  <title>Provider</title>
 </head>
 <body>
-	{% include "dashboard/navigation_bar.html" %}
+  {% include "dashboard/navigation_bar.html" %}
 
 
 <h3>Edit Provider</h3>
@@ -14,12 +14,12 @@
     <div class = "jumbotron">
       <h1>Edit Checkout Item</h1>
       <form method="POST" action="">
- 	{{form}}
+  {{form}}
         {% csrf_token %}
         <br>
         <button type="submit" class="btn btn-primary" name = "Edit_Task">Update</button>
                 <a href="/provider/">
-        	<button type="submit" class="btn btn-primary" value="Cancel" name = "Cancel">Cancel</button>
+          <button type="button" class="btn btn-primary" value="Cancel" name = "Cancel">Cancel</button>
       </form>
 
         </a>

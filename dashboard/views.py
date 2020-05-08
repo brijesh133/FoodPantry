@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from collections import defaultdict
+from dashboard.forms import *
 # Create your views here.
 
 @login_required(login_url='/login/')
