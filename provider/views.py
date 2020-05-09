@@ -5,6 +5,21 @@ from provider.forms import *
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from provider.serializers import *
+from rest_framework import viewsets
+from rest_framework import permissions
+
+class ProviderViewSet(viewsets.ModelViewSet):
+ queryset = provider.objects.all()
+ serializer_class = ProviderSerializer
+ permission_classes = [permissions.IsAuthenticated]
+
+
+class UserViewSet(viewsets.ModelViewSet):
+
+ queryset = User.objects.all()
+ serializer_class = UserSerializer
+ permission_classes = [permissions.IsAuthenticated]
 # Create your views here.
 @login_required(login_url='/login/')
 def provider_view(request):

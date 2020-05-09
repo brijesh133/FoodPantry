@@ -8,8 +8,21 @@ import datetime
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+from checkout.serializers import *
+from rest_framework import viewsets
+from rest_framework import permissions
 
+class CheckoutViewSet(viewsets.ModelViewSet):
+ queryset = checkout.objects.all()
+ serializer_class = CheckoutSerializer
+ permission_classes = [permissions.IsAuthenticated]
+
+
+class UserViewSet(viewsets.ModelViewSet):
+
+ queryset = User.objects.all()
+ serializer_class = UserSerializer
+ permission_classes = [permissions.IsAuthenticated]
 # Create your views here.
 @login_required(login_url='/login/')
 def checkout_view(request):

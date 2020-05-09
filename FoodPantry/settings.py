@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'impact_measurement',
     'inventory',
     'provider',
-    'waste_reduction'
+    'waste_reduction',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

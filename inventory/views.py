@@ -6,9 +6,21 @@ import datetime
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from inventory.serializers import *
+from rest_framework import viewsets
+from rest_framework import permissions
+
+class InventoryViewSet(viewsets.ModelViewSet):
+ queryset = inventory.objects.all()
+ serializer_class = InventorySerializer
+ permission_classes = [permissions.IsAuthenticated]
 
 
+class UserViewSet(viewsets.ModelViewSet):
 
+ queryset = User.objects.all()
+ serializer_class = UserSerializer
+ permission_classes = [permissions.IsAuthenticated]
 
 # Create your views here.
 @login_required(login_url='/login/')
