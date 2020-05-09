@@ -10,7 +10,6 @@ from django.contrib.auth.decorators import login_required
 
 
 
-
 # Create your views here.
 @login_required(login_url='/login/')
 def inventory_view(request):
@@ -50,5 +49,3 @@ def remove(request):
 		return redirect('inventory_view')
 		context={'item':item}
 		return render(request, 'inventory/inventory.html',context)
-
-

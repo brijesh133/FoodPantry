@@ -78,3 +78,6 @@ def waste_remove(request):
                 inv_object.delete()
     print("Here")
     return redirect('waste')
+
+
+

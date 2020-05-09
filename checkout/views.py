@@ -8,7 +8,7 @@ import datetime
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-
+# Create your views here.
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -23,7 +23,7 @@ def checkout_view(request):
 				a1 = cout_data.cleaned_data["item_in_inventory"]
 				after = cout_data.cleaned_data["quantity"]
 				student_ids = cout_data.cleaned_data["student_id"]
-				x = inventory.objects.get(name=a1)
+				x = inventory.objects.filter(name=a1)[0]
 				before = x.quantity
 				final = int(before) - int(after)
 				if final < 0:
@@ -58,7 +58,7 @@ def update_co(request, pk):
 			if form.is_valid():
 					a1 = form.cleaned_data["item_in_inventory"]
 					after = form.cleaned_data["quantity"]
-					x = inventory.objects.get(name=a1)
+					x = inventory.objects.filter(name=a1)[0]
 					before = x.quantity
 					final = int(before) - int(after)
 					if final < 0:
