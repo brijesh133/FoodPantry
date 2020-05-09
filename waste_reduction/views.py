@@ -7,6 +7,22 @@ from datetime import datetime, timedelta
 from waste_reduction.forms import waste_form
 from waste_reduction.models import wastage
 # Create your views here.
+from waste_reduction.serializers import *
+from rest_framework import viewsets
+from rest_framework import permissions
+
+class WastageViewSet(viewsets.ModelViewSet):
+ queryset = wastage.objects.all()
+ serializer_class = WasteSerializer
+ permission_classes = [permissions.IsAuthenticated]
+
+
+class UserViewSet(viewsets.ModelViewSet):
+
+ queryset = User.objects.all()
+ serializer_class = UserSerializer
+ permission_classes = [permissions.IsAuthenticated]
+
 
 @login_required(login_url='/login/')
 def waste_reduction(request):
@@ -45,7 +61,7 @@ def waste_remove(request):
         if form_data.is_valid():
             print("Inside data is correct")
             item = form_data.cleaned_data["item_name"]
-            print("item: ", item)
+            print("item reduction waste: ", item)
             inv_object = inventory.objects.get(id=item)
             print("inv_object: ",inv_object)
             quantity = form_data.cleaned_data["quantity"]

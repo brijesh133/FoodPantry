@@ -22,6 +22,16 @@ from inventory import views as inventory_views
 from provider import views as provider_views
 from dashboard import views as dashboard_views
 from waste_reduction import views as waste_reduction_views
+from rest_framework import routers
+
+
+router = routers.DefaultRouter()
+router.register(r'inventory', inventory_views.InventoryViewSet)
+router.register(r'checkout', checkout_views.CheckoutViewSet)
+router.register(r'provider', provider_views.ProviderViewSet)
+router.register(r'user', provider_views.UserViewSet)
+router.register(r'wastage', waste_reduction_views.WastageViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -50,4 +60,7 @@ urlpatterns = [
 
     path('waste/', waste_reduction_views.waste_reduction, name='waste'),
     path('waste_remove/', waste_reduction_views.waste_remove, name='waste_remove'),
+
+    path('api/v1/', include(router.urls)),
+    path('api-auth/v1/', include('rest_framework.urls',namespace='rest_framework')),
 ]
