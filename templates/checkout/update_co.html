@@ -6,19 +6,25 @@
 </head>
 <body>
 	{% include "dashboard/navigation_bar.html" %}
+<br><br>
 
 
-<h3>Edit Checkout Item</h3>
+<h1>Edit Checkout Item</h1>
+<br>
+<br>
 
-<div class="container">
-    <div class = "jumbotron">
-      <h1>Edit Checkout Item</h1>
+<div class="form">
+    <div class = "login-form">
+      <!-- <h1>Edit Checkout Item</h1> -->
       <form method="POST" action="">
  	{{form}}
         {% csrf_token %}
         <br>
+        <br>
+        
         <button type="submit" class="btn btn-primary" name = "Edit_Task">Update</button>
                 <a href="/checkout/">
+                  <br><br>
         	<button type="submit" class="btn btn-primary" value="Cancel" name = "Cancel">Cancel</button>
       </form>
 
