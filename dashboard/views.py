@@ -9,16 +9,36 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from collections import defaultdict
 from dashboard.forms import *
+from inventory.models import inventory
+from datetime import datetime, timedelta 
 # Create your views here.
 
 @login_required(login_url='/login/')
 def dashboard(request):
     dictOfCheckouts = getCheckOutInfo()
-    print(dictOfCheckouts)
-    page_data = {"ChartData":dictOfCheckouts}
+    dictOfPieChart = getPieChartInfo()
+    page_data = {"ChartData":dictOfCheckouts, "good_products":dictOfPieChart.get("total_good"), "about_to_expire":dictOfPieChart.get("about_to_expire"), "already_expired": dictOfPieChart.get("already_expired")}
+    print(page_data)
     return render(request, "dashboard/dashboard.html", context=page_data)
 
 
+
+def getPieChartInfo():
+    ini_time_for_now = datetime.now().date()
+    about_to_expire = 0
+    already_expired = 0
+    total = 0
+    inventoryobjects = inventory.objects.all()
+    for x in inventoryobjects:
+        total = total + 1
+        if (x.expiry_D - ini_time_for_now).days <= 2 and (x.expiry_D - ini_time_for_now).days >= 0:
+            about_to_expire = about_to_expire + 1
+        if (x.expiry_D - ini_time_for_now).days < 0:
+            already_expired = already_expired + 1
+
+    total = total - about_to_expire - already_expired
+    piechartdict = {"total_good":total, "about_to_expire": about_to_expire, "already_expired": already_expired}
+    return piechartdict
 
 
 def getCheckOutInfo():

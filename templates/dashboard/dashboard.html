@@ -33,9 +33,52 @@
               
   
       new Chartist.Bar('#chart1', data);
+
     </script>
     </div>
+  </div>
+
+
+
+
+
+  <div class="card h-75" style="width:525px;">
+        <div class="card-body">
+          <h5 class="card-title">Waste Reduction</h5>
+      <div class="ct-perfect-fourth" id="chart2"></div>
+  <script>
+  
+           var data_pie = {
+            labels: ['Good Products', 'About to Expire Products', 'Already Expired Products'],
+            series: [{{ good_products }}, {{ about_to_expire }}, {{ already_expired }}]
+            };
+
+            var options_pie = {
+            labelInterpolationFnc: function(value) {
+                return value[0]
+            }
+            };
+
+            var responsiveOptions_pie = [
+            ['screen and (min-width: 640px)', {
+                chartPadding: 30,
+                labelOffset: 100,
+                labelDirection: 'explode',
+                labelInterpolationFnc: function(value) {
+                return value;
+                }
+            }],
+            ['screen and (min-width: 1024px)', {
+                labelOffset: 80,
+                chartPadding: 20
+            }]
+            ];
+  
+      new Chartist.Pie('#chart2', data_pie, options_pie, responsiveOptions_pie);
+
+    </script>
     </div>
+  </div>
 
 
 
