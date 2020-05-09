@@ -10,16 +10,28 @@ from django.contrib.auth.decorators import login_required
 from collections import defaultdict
 from dashboard.forms import *
 from inventory.models import inventory
-from datetime import datetime, timedelta 
+from datetime import datetime, timedelta
+from provider.models import provider
+
 # Create your views here.
 
 @login_required(login_url='/login/')
 def dashboard(request):
     dictOfCheckouts = getCheckOutInfo()
     dictOfPieChart = getPieChartInfo()
-    page_data = {"ChartData":dictOfCheckouts, "good_products":dictOfPieChart.get("total_good"), "about_to_expire":dictOfPieChart.get("about_to_expire"), "already_expired": dictOfPieChart.get("already_expired")}
+    total_donors = getDonorCount()
+    page_data = {"ChartData":dictOfCheckouts, "good_products":dictOfPieChart.get("total_good"), "about_to_expire":dictOfPieChart.get("about_to_expire"), "already_expired": dictOfPieChart.get("already_expired"), "total_donors": total_donors}
     print(page_data)
     return render(request, "dashboard/dashboard.html", context=page_data)
+
+
+
+def getDonorCount():
+    provider_objects = provider.objects.all()
+    count = 0
+    for x in provider_objects:
+        count = count + 1
+    return count
 
 
 
