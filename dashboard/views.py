@@ -20,9 +20,42 @@ def dashboard(request):
     dictOfCheckouts = getCheckOutInfo()
     dictOfPieChart = getPieChartInfo()
     total_donors = getDonorCount()
-    page_data = {"ChartData":dictOfCheckouts, "good_products":dictOfPieChart.get("total_good"), "about_to_expire":dictOfPieChart.get("about_to_expire"), "already_expired": dictOfPieChart.get("already_expired"), "total_donors": total_donors}
-    print(page_data)
+    mostdonatedItems = calculateDonations()
+    print("mostdonatedItems: ", mostdonatedItems)
+    page_data = {"ChartData":dictOfCheckouts, "good_products":dictOfPieChart.get("total_good"), "about_to_expire":dictOfPieChart.get("about_to_expire"), "already_expired": dictOfPieChart.get("already_expired"), "total_donors": total_donors, "dat2":mostdonatedItems}
     return render(request, "dashboard/dashboard.html", context=page_data)
+
+
+
+
+def calculateDonations():
+
+    page_data_chartist = {}
+    page_data_chartist_ret = {}
+
+    raw_data = inventory.objects.all()
+
+    for x in raw_data:
+        page_data_chartist.setdefault(x.name, 0)
+
+
+    for x in raw_data:
+        page_data_chartist[x.name] = x.quantity
+
+
+    print(page_data_chartist)
+
+    j = 0
+    l1 = []
+    l2 = []
+    for w in sorted(page_data_chartist, key=page_data_chartist.get, reverse=True):
+        page_data_chartist_ret[w] = page_data_chartist[w]
+        if j == 10:
+            break
+        j = j + 1
+
+    return page_data_chartist_ret
+
 
 
 

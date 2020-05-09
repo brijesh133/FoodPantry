@@ -90,5 +90,47 @@
 
 
 
+
+  <div class="card h-75" style="width:525px;">
+        <div class="card-body">
+          <h5 class="card-title">Most items doated</h5>
+      <div class="ct-perfect-fourth" id="chart3"></div>
+  <script>
+  
+          var data = {
+          // A labels array that can contain any sort of values
+          labels: [{% for key, value in dat2.items %}
+                '{{key}}',
+              {% endfor %}],
+          // Our series array that contains series objects or in this case series data arrays
+          series: [
+            [{% for key, value in dat2.items %}
+                  {{value}},
+                {% endfor %}]
+                ]
+              };
+              
+                var options = {
+                  high : 25,
+                  low: 0,
+                  onlyInteger: true,
+                  scaleMinSpace : 10,
+                    showArea: true,
+                    width: '400px',
+                    height: '250px'
+                };
+  
+      new Chartist.Line('#chart3', data, options);
+    </script>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
 </body>
 </html>
