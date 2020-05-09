@@ -20,23 +20,33 @@
   <div class="row">
     <div class="col">
 
-<div class="card h-75" style="width:550px ;">
+<div class="card" style="width:550px ;">
   <div class="card-body">
-    <h5 class="card-title" >Statistics:</h5>
-    <br>
     <p class="card-text" style="font-size: 20px; ">Total Number of checkouts from the foodpantry: {{Total_Checkouts}} items</p>
-      <p class="card-text" style="font-size: 20px; ">Total Number of Students benefitted from pantry: {{Unique}} items</p>
-        <p class="card-text" style="font-size: 20px; ">Total donation amount of all the food in dollars: ${{Total_Amount}}</p>
-          <p class="card-text" style="font-size: 20px; ">Total Number of food products donated from pantry: {{Total_Quantity}} items</p>
     </div>
-  </div>
+  </div><br><br>
+
+  <div class="card" style="width:550px ;">
+    <div class="card-body">
+  <p class="card-text" style="font-size: 20px; ">Total Number of Students benefitted from pantry: {{Unique}} items</p>
+    </div></div><br><br>
+
+    <div class="card" style="width:550px ;">
+      <div class="card-body">
+  <p class="card-text" style="font-size: 20px; ">Total donation amount of all the food in dollars: ${{Total_Amount}}</p>
+      </div></div><br><br>
+      <div class="card" style="width:550px ;">
+        <div class="card-body">
+
+    <p class="card-text" style="font-size: 20px; ">Total Number of food products donated from pantry: {{Total_Quantity}} items</p>
+        </div></div>
 
 
     </div>
     <div class="col">
 
 
-  <div class="card h-75" style="width:525px;">
+  <div class="card h-85" style="width:525px;">
         <div class="card-body">
           <h5 class="card-title">Average number of items per student: {{average}} items</h5>
       <div class="ct-perfect-fourth" id="ct-chart"></div>
@@ -62,7 +72,7 @@
                   scaleMinSpace : 10,
                     showArea: true,
                     width: '400px',
-                    height: '250px'
+                    height: '350px'
                 };
   
       new Chartist.Line('#ct-chart', data, options);
@@ -78,6 +88,7 @@
 
   </div>
 </div>
+<br>
 
 <div class="container">
 	<div class="jumbotron">

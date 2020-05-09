@@ -75,16 +75,18 @@
 
 <div class="form">
   
-<label>Remove expired products from inventory</label>
+  <h5 class="card-title">Remove expired products from inventory</h5>
 
   <form method="POST" action="/waste_remove/">
     {% csrf_token %}
-    <label>Select Item:</label>
-  {{waste_forms.item_name}} 
+    <!-- <label>Select Item:</label>  -->
+    {{waste_forms.item_name}} 
+<br>
+<br>
 
     {{waste_forms.quantity}}
     <!-- <input class="btn btn-info" type="submit" name="Add Item"> -->
-    <button type="submit" class="btn btn-info">Add Item</button>
+    <button type="submit" class="btn btn-info">Remove</button>
   </form>
 </div>
 
