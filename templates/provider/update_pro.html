@@ -15,7 +15,12 @@
     <div class = "login-form">
       <!-- <h1>Edit Checkout Item</h1> -->
       <form method="POST" action="">
-  {{form}}
+        <p style="text-align: left;">Donor Name:</p>
+  {{form.donor_name}}
+  <p style="text-align: left;">Donor Username:</p>
+  {{form.user_name}}
+  <label>Doner Type</label>
+  {{form.donor_status}}
         {% csrf_token %}
         <br><br>
         <button type="submit" class="btn btn-primary" name = "Edit_Task">Update</button>
