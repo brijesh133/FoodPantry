@@ -16,8 +16,16 @@
     <div class = "login-form">
       
       <form method="POST" action="">
-
- 	{{form}}
+        <label>Donor:</label>
+    {{form.donor}}    <br><br>
+    <p style="text-align: left;">Name:</p>
+   {{form.name}}
+   <p style="text-align: left;">Best before:</p>
+   {{form.expiry_D}}
+   <p style="text-align: left;">Price:</p>
+   {{form.price}}
+   <p style="text-align: left;">Quantity:</p>
+   {{form.quantity}}
         {% csrf_token %}
         <br>
         <button type="submit" class="btn btn-primary" name = "Edit_Task">Update</button>
