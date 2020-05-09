@@ -5,15 +5,18 @@
 	<title>Inventory</title>
 </head>
 <body>
-	{% include "dashboard/navigation_bar.html" %}
+  {% include "dashboard/navigation_bar.html" %}
+  <br>
+  <br>
 
 
-<h1>Edit Item</h1>
+<h1>Edit Item</h1><br><br>
 
 <div class="form">
     <div class = "login-form">
       
       <form method="POST" action="">
+
  	{{form}}
         {% csrf_token %}
         <br>
