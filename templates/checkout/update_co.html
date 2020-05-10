@@ -17,7 +17,17 @@
     <div class = "login-form">
       <!-- <h1>Edit Checkout Item</h1> -->
       <form method="POST" action="">
- 	{{form}}
+        <p style="text-align: left;">Item name:</p>
+        {{form.item_name}}
+        <p style="text-align: left;">Student ID:</p>
+   {{form.student_id}}
+   <p style="text-align: left;">Quantity:</p>
+   {{form.quantity}}
+   <p style="text-align: left;">Price:</p>
+  
+   {{form.price}}
+   <p style="text-align: left;">Donor:</p>
+   {{form.donor}}
         {% csrf_token %}
         <br>
         <br>
