@@ -1,10 +1,10 @@
 /* @import url(https://fonts.googleapis.com/css?family=Roboto:300); */
 
 @font-face {
-  font-family: 'Slabo 27px';
-  src: local('Slabo 27px'),
-       url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Slabo+27px&display=swap'),
-      format("serif");
+  font-family: 'Actor';
+  src: local('Actor'),
+       url('https://fonts.googleapis.com/css2?family=Actor&display=swap'),
+      format("sans-serif");
 }
 
 .login-page {
@@ -24,7 +24,7 @@
 }
 .form input{
   /* font-family: "Roboto", sans-serif; */
-  font-family: 'Slabo 27px', serif;
+  font-family: 'Actor', sans-serif;
 
   outline: 0;
   background: #f2f2f2;
@@ -37,7 +37,7 @@
 }
 .form button {
   /* font-family: "Roboto", sans-serif; */
-  font-family: 'Slabo 27px', serif;
+  font-family: 'Actor', sans-serif;
 
   text-transform: uppercase;
   outline: 0;
@@ -88,13 +88,13 @@ body {
   /* font-family: "Roboto", sans-serif; */
 
   background: white;
-  background: -webkit-linear-gradient(right, #F0FFFF, #99c2ff);
-  background: -moz-linear-gradient(right, #F0FFFF, #99c2ff);
-  background: -o-linear-gradient(right, #F0FFFF, #99c2ff);
-  background: linear-gradient(to left, #F0FFFF, #99c2ff);
+  background: -webkit-linear-gradient(top, #F0FFFF, #99c2ff);
+  background: -moz-linear-gradient(top, #F0FFFF, #99c2ff);
+  background: -o-linear-gradient(top, #F0FFFF, #99c2ff);
+  background: linear-gradient(to bottom right, #F0FFFF, #99c2ff);
 
 
-  font-family: 'Slabo 27px', serif;
+  font-family: 'Actor', sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
