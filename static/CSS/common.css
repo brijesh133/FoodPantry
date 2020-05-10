@@ -1,4 +1,11 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:300); */
+
+@font-face {
+  font-family: 'Slabo 27px';
+  src: local('Slabo 27px'),
+       url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&family=Slabo+27px&display=swap'),
+      format("serif");
+}
 
 .login-page {
   width: 360px;
@@ -16,7 +23,9 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input{
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: 'Slabo 27px', serif;
+
   outline: 0;
   background: #f2f2f2;
   width: 100%;
@@ -27,10 +36,12 @@
   font-size: 14px;
 }
 .form button {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
+  font-family: 'Slabo 27px', serif;
+
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: #1E90FF;
   width: 100%;
   border: 0;
   padding: 15px;
@@ -41,7 +52,7 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: #99c2ff;
 }
 .form .message {
   margin: 15px 0 0;
@@ -49,11 +60,14 @@
   font-size: 12px;
 }
 .form .message a {
-  color: #4CAF50;
+  color: #00BFFF;
   text-decoration: none;
 }
 h1{
   text-align: center;
+}
+button1{
+  background: #1E90FF;
 }
 .my-custom-scrollbar {
   position: relative;
@@ -62,15 +76,26 @@ h1{
   }
 .table-wrapper-scroll-y {
   display: block;
+  height: 400px;
   }
 
 body {
-  background: white;
+  /* background: white;
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
   background: -moz-linear-gradient(right, #76b852, #8DC26F);
   background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
-  font-family: "Roboto", sans-serif;
+  background: linear-gradient(to left, #76b852, #8DC26F); */
+  /* font-family: "Roboto", sans-serif; */
+
+  background: white;
+  background: -webkit-linear-gradient(right, #F0FFFF, #99c2ff);
+  background: -moz-linear-gradient(right, #F0FFFF, #99c2ff);
+  background: -o-linear-gradient(right, #F0FFFF, #99c2ff);
+  background: linear-gradient(to left, #F0FFFF, #99c2ff);
+
+
+  font-family: 'Slabo 27px', serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
 }
