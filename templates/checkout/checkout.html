@@ -6,7 +6,12 @@
 </head>
 <body>
 	{% include "dashboard/navigation_bar.html" %}
+	<br>
+	<br>
+
 <h1>Check Out</h1>
+<br>
+<br>
 
 {% load static %}
 <script src="{%static 'JS/common.js' %}"></script>
@@ -67,9 +72,9 @@ function confirmDeleteModal(id) {
 
 
 
-					    			<td>                        <a class="btn btn-success" href="{% url 'update_co' each.id %}">Edit</a>
-					<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>
-                   {% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}
+					    			<td>                        <a class="btn btn-outline-primary" href="{% url 'update_co' each.id %}">Edit</a>
+					<a class="btn btn-outline-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>
+                   {% comment %} <a class="btn btn-danger" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}
     				</td> 
 
     	</tr>

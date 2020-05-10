@@ -9,8 +9,10 @@
 <body>
 
 
-	{% include "dashboard/navigation_bar.html" %}
-<h1>Impact Measurement Page</h1>
+  {% include "dashboard/navigation_bar.html" %}
+  <br>
+  <br>
+<h1>Impact Measurement</h1>
 
 <br>
 <br>
@@ -22,23 +24,23 @@
 
 <div class="card" style="width:550px ;">
   <div class="card-body">
-    <p class="card-text" style="font-size: 20px; ">Total Number of checkouts from the foodpantry: {{Total_Checkouts}} items</p>
+    <p class="card-text" style="font-size: 20px; ">Total number of checkouts from the pantry:  {{Total_Checkouts}} Items</p>
     </div>
   </div><br><br>
 
   <div class="card" style="width:550px ;">
     <div class="card-body">
-  <p class="card-text" style="font-size: 20px; ">Total Number of Students benefitted from pantry: {{Unique}} items</p>
+  <p class="card-text" style="font-size: 20px; ">Total number of students benefitted from pantry:  {{Unique}} Students</p>
     </div></div><br><br>
 
     <div class="card" style="width:550px ;">
       <div class="card-body">
-  <p class="card-text" style="font-size: 20px; ">Total donation amount of all the food in dollars: ${{Total_Amount}}</p>
+  <p class="card-text" style="font-size: 20px; ">Total donation amount of all the food in dollars:  ${{Total_Amount}}</p>
       </div></div><br><br>
       <div class="card" style="width:550px ;">
         <div class="card-body">
 
-    <p class="card-text" style="font-size: 20px; ">Total Number of food products donated from pantry: {{Total_Quantity}} items</p>
+    <p class="card-text" style="font-size: 20px; ">Total number of food products donated from pantry:  {{Total_Quantity}} Items</p>
         </div></div>
 
 
@@ -48,7 +50,7 @@
 
   <div class="card h-85" style="width:525px;">
         <div class="card-body">
-          <h5 class="card-title">Average number of items per student: {{average}} items</h5>
+          <h5 class="card-title">Average number of items per student:  {{average}} Items</h5>
       <div class="ct-perfect-fourth" id="ct-chart"></div>
   <script>
   
@@ -92,7 +94,8 @@
 
 <div class="container">
 	<div class="jumbotron">
-    <h5 class="card-title text-center" >Student List with number of items</h5>
+    <h5 class="card-title" >Students list with number of items: </h5>
+    <br>
 <div class="table-wrapper-scroll-y my-custom-scrollbar">	
   <table bgcolor="white" class="table table-bordered table-striped mb-0" width="100%">
   <thead>

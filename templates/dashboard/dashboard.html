@@ -5,16 +5,22 @@
 	<title>Dashboard</title>
 </head>
 <body>
-	{% include "dashboard/navigation_bar.html" %}
-<h1>Dashboard Page</h1>
+  {% include "dashboard/navigation_bar.html" %}
+  <br>
+  <br>
+<h1>Dashboard</h1>
+<br><br>
+
+<div class="container">
+  <div class="row">
 
 
+    <div class="col">
 
 
-
-  <div class="card h-75" style="width:525px;">
+  <div class="card h-100" style="width:525px;">
         <div class="card-body">
-          <h5 class="card-title">Number of items checkedout by students from pantry in last 10 days:</h5>
+          <h5 class="card-title">Number of items checked out by students from pantry in last 10 days:</h5>
       <div class="ct-perfect-fourth" id="chart1"></div>
   <script>
   
@@ -35,21 +41,26 @@
       new Chartist.Bar('#chart1', data);
 
     </script>
+    		  <a href="/checkout/">
+            <button type="button">Check Out</button>
+            </a>
+    
     </div>
   </div>
 
+</div>
+
+<div class="col">
 
 
-
-
-  <div class="card h-75" style="width:525px;">
+  <div class="card h-100" style="width:525px;">
         <div class="card-body">
-          <h5 class="card-title">Waste Reduction</h5>
+          <h5 class="card-title">Waste Reduction:</h5>
       <div class="ct-perfect-fourth" id="chart2"></div>
   <script>
   
            var data_pie = {
-            labels: ['Good Products', 'About to Expire Products', 'Already Expired Products'],
+            labels: ['Good Products', 'About to Expire Products', 'Expired Products'],
             series: [{{ good_products }}, {{ about_to_expire }}, {{ already_expired }}]
             };
 
@@ -70,30 +81,39 @@
             }],
             ['screen and (min-width: 1024px)', {
                 labelOffset: 80,
-                chartPadding: 20
+                chartPadding: 50
             }]
             ];
   
       new Chartist.Pie('#chart2', data_pie, options_pie, responsiveOptions_pie);
 
     </script>
+    		  <a href="/waste_reduction/">
+            <button type="submit" class="btn btn-primary">Waste Reduction</button>
+            </a>
     </div>
   </div>
 
+</div>
 
-  <div class="card h-75" style="width:525px;">
+
+
+</div>
+</div>
+<br>
+<br>
+
+<div class="container">
+  <div class="row">
+
+
+
+<div class="col">
+
+
+  <div class="card h-100" style="width:525px;">
         <div class="card-body">
-          <h5 class="card-title">Total number of contributers: {{total_donors}}</h5>
-        </div>
-      </div>
-
-
-
-
-
-  <div class="card h-75" style="width:525px;">
-        <div class="card-body">
-          <h5 class="card-title">Most items doated</h5>
+          <h5 class="card-title">Most items donated:</h5>
       <div class="ct-perfect-fourth" id="chart3"></div>
   <script>
   
@@ -117,14 +137,33 @@
                   scaleMinSpace : 10,
                     showArea: true,
                     width: '400px',
-                    height: '250px'
+                    height: '350px'
                 };
   
       new Chartist.Line('#chart3', data, options);
     </script>
+     		  <a href="/impact_measurement/">
+            <button type="submit" class="btn btn-primary">Impact Measurement</button>
+            </a>
     </div>
     </div>
 
+
+</div>
+
+
+<div class="col">
+<div class="card h-100" style="width:525px;">
+  <div class="card-body">
+    <h5 class="card-title">Total number of contributers: {{total_donors}}</h5>
+  </div>
+</div>
+</div>
+
+
+
+  </div>
+</div>
 
 
 

@@ -8,7 +8,7 @@
 	{% include "dashboard/navigation_bar.html" %}
 	<br><br>
 
-<h1>Inventory Page</h1>
+<h1>Inventory</h1>
 <br><br>
 {% load static %}
 <script src="{%static 'JS/common.js' %}"></script>
@@ -52,7 +52,7 @@ function confirmDeleteModal(id) {
       <th scope="col">Item Name</th>
       <th scope="col">Received Date</th>
       <th scope="col">Expiry Date</th>
-      <th scope="col">Price</th>
+      <th scope="col">Price/item</th>
 	  <th scope="col">Quantity</th>
 	  <th scope="col">Action</th>
     </tr>
@@ -74,8 +74,8 @@ function confirmDeleteModal(id) {
     				<td>No</td>
 					{% endif %}  {% endcomment %}
 	<td>
-	<a class="btn btn-success" href="{% url 'update' each.id %}">Edit</a>
-	<a class="btn btn-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>{% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}</td> 
+	<a class="btn btn-outline-primary" href="{% url 'update' each.id %}">Edit</a>
+	<a class="btn btn-outline-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>{% comment %} <a class="btn btn-success" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}</td> 
 
     	</tr>
 		 		{% endfor %}

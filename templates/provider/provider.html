@@ -7,7 +7,7 @@
 <body>
     {% include "dashboard/navigation_bar.html" %}
     <br><br>
-<h1>Provider Page</h1>
+<h1>Provider</h1>
 <br><br>
 
  {% load static %}
@@ -16,7 +16,8 @@
 </div> 
 <div class="container">
 <div class="jumbotron">
- <table bgcolor="white" class="table table-striped">
+  <div class="table-wrapper-scroll-y my-custom-scrollbar">
+ <table bgcolor="white" class="table table-bordered table-striped mb-0">
   <thead>
     <tr>
       <th scope="col">Donor Name</th>
@@ -31,21 +32,21 @@
         <td>{{each.user_name}}</td>
         <td>{{each.donor_status}}</td>
         <td>
-            <a class="btn btn-success" href="{% url 'update_pro' each.donor_name %}">Edit</a> 
+            <a class="btn btn-outline-primary" href="{% url 'update_pro' each.donor_name %}">Edit</a> 
 
-            <a class="btn btn-danger" href="#" data-toggle="modal" data-target="#deleteModal{{ each.donor_name }}">Delete</a>
+            <a class="btn btn-outline-danger" href="#" data-toggle="modal" data-target="#deleteModal{{ each.donor_name }}">Delete</a>
             <!-- Delete model box for each row in for loop-->
             <div class="modal fade" id="deleteModal{{ each.donor_name }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="deleteModalLabel">Delete Task</h5>
+                      <h5 class="modal-title" id="deleteModalLabel">Delete Provider</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      Do you really waht to delete this Sponsor ?
+                      Do you really want to delete this Provider ?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -62,6 +63,7 @@
 {% endfor %}
   </tbody>
 </table>
+  </div>
 </div>
 </div>
 <div class="container"> 

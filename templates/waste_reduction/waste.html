@@ -5,8 +5,11 @@
 	<title>Waste Reduction</title>
 </head>
 <body>
-	{% include "dashboard/navigation_bar.html" %}
-<h1>Waste Reduction Page</h1>
+  {% include "dashboard/navigation_bar.html" %}
+  <br>
+  <br>
+<h1>Waste Reduction</h1>
+<br><br>
 
 <div class="container">
 	<div class="jumbotron">
@@ -75,11 +78,12 @@
 
 <div class="form">
   
-  <h5 class="card-title">Remove expired products from inventory</h5>
+  <h5 class="card-title">Remove expired products</h5>
+  <br>
 
   <form method="POST" action="/waste_remove/">
     {% csrf_token %}
-    <!-- <label>Select Item:</label>  -->
+    <label>Select Item:</label> 
     {{waste_forms.item_name}} 
 <br>
 <br>
