@@ -63,6 +63,7 @@ def waste_remove(request):
             item = form_data.cleaned_data["item_name"]
             print("item reduction waste: ", item)
             inv_object = inventory.objects.get(id=item)
+            item = inv_object.name
             print("inv_object: ",inv_object)
             quantity = form_data.cleaned_data["quantity"]
             registration_date = inv_object.registration_D

@@ -21,10 +21,25 @@ def dashboard(request):
     dictOfPieChart = getPieChartInfo()
     total_donors = getDonorCount()
     mostdonatedItems = calculateDonations()
-    print("mostdonatedItems: ", mostdonatedItems)
-    page_data = {"ChartData":dictOfCheckouts, "good_products":dictOfPieChart.get("total_good"), "about_to_expire":dictOfPieChart.get("about_to_expire"), "already_expired": dictOfPieChart.get("already_expired"), "total_donors": total_donors, "dat2":mostdonatedItems}
+    DonorDetails = getDonorDetails()
+    page_data = {"ChartData":dictOfCheckouts, "good_products":dictOfPieChart.get("total_good"), "about_to_expire":dictOfPieChart.get("about_to_expire"), "already_expired": dictOfPieChart.get("already_expired"), "total_donors": total_donors, "dat2":mostdonatedItems, "DonorDetails": DonorDetails}
     return render(request, "dashboard/dashboard.html", context=page_data)
 
+
+
+def getDonorDetails():
+    provider_list = provider.objects.all()
+    countOfIndividual = 0
+    countOfOrganization = 0
+    countOfAnonymous = 0
+    for j in provider_list:
+        if j.anonymus_status == True:
+            countOfAnonymous = countOfAnonymous + 1
+        elif j.donor_status == 'Individual' and j.anonymus_status == False:
+            countOfIndividual = countOfIndividual + 1
+        elif j.donor_status == 'Organisation' and j.anonymus_status == False:
+            countOfOrganization = countOfOrganization + 1
+    return {"countOfIndividual": countOfIndividual, "countOfOrganization": countOfOrganization, "countOfAnonymous": countOfAnonymous}
 
 
 

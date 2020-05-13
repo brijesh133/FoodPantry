@@ -156,6 +156,38 @@
 <div class="card h-100" style="width:525px;">
   <div class="card-body">
     <h5 class="card-title">Total number of contributers: {{total_donors}}</h5>
+    <div class="ct-perfect-fourth" id="chart4"></div>
+      <script>
+  
+           var data_pie1 = {
+            labels: ['Individual Donors', 'Organization', 'Anonymous Donors'],
+            series: [{{ DonorDetails.countOfIndividual }}, {{ DonorDetails.countOfOrganization }}, {{ DonorDetails.countOfAnonymous }}]
+            };
+
+            var options_pie1 = {
+            labelInterpolationFnc: function(value) {
+                return value[0]
+            }
+            };
+
+            var responsiveOptions_pie1 = [
+            ['screen and (min-width: 640px)', {
+                chartPadding: 30,
+                labelOffset: 100,
+                labelDirection: 'explode',
+                labelInterpolationFnc: function(value) {
+                return value;
+                }
+            }],
+            ['screen and (min-width: 1024px)', {
+                labelOffset: 80,
+                chartPadding: 50
+            }]
+            ];
+  
+      new Chartist.Pie('#chart4', data_pie1, options_pie1, responsiveOptions_pie1);
+
+    </script>
   </div>
 </div>
 </div>

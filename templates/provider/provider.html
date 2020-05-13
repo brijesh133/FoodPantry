@@ -29,7 +29,11 @@
   <tbody>
 {% for each in donor %}
     <tr>
+        {% if each.anonymus_status %}
+        <td> Anonymous Donor </td>
+        {% else %}
         <td>{{each.user_name}}</td>
+        {% endif %}
         <td>{{each.donor_status}}</td>
         <td>
             <a class="btn btn-outline-primary" href="{% url 'update_pro' each.donor_name %}">Edit</a> 
@@ -75,6 +79,8 @@
                     {{donor_data.user_name}}
                     <label>Donor Status:</label>
                     {{donor_data.donor_status}}
+                    <label>Anonymous Status:</label>
+                    {{donor_data.anonymus_status}}
                     <br>
                     <br>
 
