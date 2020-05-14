@@ -35,11 +35,7 @@ def impact_measurement(request):
         sumofquant = sumofquant + quantity_by_student[key]
 
     average = sumofquant / sumofstud
-
     page_data = {"Total_Checkouts" : total_check, "Unique" : len(unique_id), "Total_Amount": total_amount, "Total_Quantity": total_products, "dat": quantity_by_student, "average": average, "dat2" : chart_values}
-
-    print(page_data)
-
     return render(request, "impact_measurement/impact.html", context=page_data)
 
 
@@ -67,9 +63,6 @@ def calculatevalues(raw_data):
 
     for x in raw_data:
         page_data_chartist[x.item_name] = page_data_chartist[x.item_name] + x.quantity
-
-
-    print(page_data_chartist)
 
     j = 0
     l1 = []

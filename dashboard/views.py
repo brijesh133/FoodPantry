@@ -58,8 +58,6 @@ def calculateDonations():
         page_data_chartist[x.name] = x.quantity
 
 
-    print(page_data_chartist)
-
     j = 0
     l1 = []
     l2 = []
@@ -120,7 +118,6 @@ def getCheckOutInfo():
     l = 0
     chart_data_sorted = sorted(chart_data, key = chart_data.get)
     for k in chart_data_sorted:
-        print(k.strftime("%d %b %Y "), chart_data[k])
         chart_data_updated[k.strftime("%d %b %Y ")] = chart_data[k]
         if l == 10:
             break

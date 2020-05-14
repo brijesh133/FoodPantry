@@ -18,5 +18,5 @@ class waste_form(forms.Form):
         self.fields['registration_D'] = forms.DateField(required=False)
         self.fields['expiry_D'] = forms.DateField(required=False)
         self.fields['price'] = forms.FloatField(required=False)
-        self.fields['quantity'] =  forms.CharField(required=False)
+        self.fields['quantity'] =  forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Quantity'}))
         self.fields['donor'] = forms.CharField(max_length=100, required=False)

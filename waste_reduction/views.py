@@ -27,7 +27,6 @@ class UserViewSet(viewsets.ModelViewSet):
 @login_required(login_url='/login/')
 def waste_reduction(request):
     ini_time_for_now = datetime.now().date()
-    print("Initial date: ", str(ini_time_for_now))
     future_date_after_2days = ini_time_for_now + timedelta(days = 2)
     gotmyList = getmyList()
     waste_forms = waste_form()
@@ -35,7 +34,6 @@ def waste_reduction(request):
     already_expired = []
     inventoryobjects = inventory.objects.all()
     for x in inventoryobjects:
-        print(x.registration_D)
         if (x.expiry_D - ini_time_for_now).days <= 2 and (x.expiry_D - ini_time_for_now).days >= 0:
             about_to_expire.append(x)
         if (x.expiry_D - ini_time_for_now).days < 0:
@@ -57,14 +55,10 @@ def getmyList():
 def waste_remove(request):
     if(request.method == "POST"):
         form_data = waste_form(request.POST)
-        print("form_data.is_valid()",form_data.is_valid())
         if form_data.is_valid():
-            print("Inside data is correct")
             item = form_data.cleaned_data["item_name"]
-            print("item reduction waste: ", item)
             inv_object = inventory.objects.get(id=item)
             item = inv_object.name
-            print("inv_object: ",inv_object)
             quantity = form_data.cleaned_data["quantity"]
             registration_date = inv_object.registration_D
             expiry_date = inv_object.expiry_D
@@ -93,7 +87,6 @@ def waste_remove(request):
                 waste_object.save()
                 inv_object.quantity = inv_object.quantity - int(quantity)
                 inv_object.delete()
-    print("Here")
     return redirect('waste')
 
 

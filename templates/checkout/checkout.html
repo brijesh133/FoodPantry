@@ -15,37 +15,6 @@
 
 {% load static %}
 <script src="{%static 'JS/common.js' %}"></script>
-<script>
-function confirmDeleteModal(id) {
-    $('#deleteModal').modal();
-    $('#deleteButton').html('<a href="/remove_co/?id='+id+'" class="btn btn-danger" onclick="return closeDeleteModal('+id+')">Delete</a>');
-   }
-   
-   
-   function closeDeleteModal(id) {
-    $('#deleteModal').modal('hide');
-    return true
-   }
-
-</script>
- <div id="deleteModal" class="modal fade" role='dialog'>
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title">Delete Item</h4>
-			</div>
-		<div class="modal-body">
-			<p>Do you really want to delete this Item?</p>
-	</div>
-		<div class="modal-footer">
-			<a href="/checkout/">
-			<button type="button" class="btn btn-default" datadismiss="modal">Cancel</button>
-			</a>
-			<span id= 'deleteButton'></span>
-		</div>
-	</div>
-	</div>
-</div>
 <div class="container">
 	<div class="jumbotron">
 		<div class="table-wrapper-scroll-y my-custom-scrollbar">	
@@ -56,7 +25,6 @@ function confirmDeleteModal(id) {
       <th scope="col">Checkout Date</th>
       <th scope="col">Item Name</th>
       <th scope="col">Quantity</th>
-	  <th scope="col">Action</th>
 
     </tr>
   </thead>
@@ -69,21 +37,44 @@ function confirmDeleteModal(id) {
 					<td>{{each.checkout_date}}</td>
 					<td>{{each.item_name}}</td>
 					<td>{{each.quantity}}</td>
-
-
-
-					    			<td>                        <a class="btn btn-outline-primary" href="{% url 'update_co' each.id %}">Edit</a>
-					<a class="btn btn-outline-danger" href="#" onclick="confirmDeleteModal({{each.id}})">Delete</a>
-                   {% comment %} <a class="btn btn-danger" href="{% url 'remove' each.id %}">Delete</a> {% endcomment %}
-    				</td> 
-
-    	</tr>
-		 		{% endfor %}
+    </tr>
+{% endfor %}
   </tbody>
 </table>
 	</div>
 	</div>
 </div>
+
+
+
+{% if isInserted %}
+     <!-- Delete model box for each row in for loop-->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Confirmation</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Item(s) succefully checked out!
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ok</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- Ends here -->
+
+{% endif %}
+
+
+
+
+
 
 
 

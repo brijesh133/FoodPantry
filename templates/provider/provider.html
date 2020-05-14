@@ -37,7 +37,7 @@
         <td>{{each.donor_status}}</td>
         <td>
             <a class="btn btn-outline-primary" href="{% url 'update_pro' each.donor_name %}">Edit</a> 
-
+            <a class="btn btn-outline-primary" href="{% url 'provider_details' each.donor_name %}">Details</a> 
             <a class="btn btn-outline-danger" href="#" data-toggle="modal" data-target="#deleteModal{{ each.donor_name }}">Delete</a>
             <!-- Delete model box for each row in for loop-->
             <div class="modal fade" id="deleteModal{{ each.donor_name }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">

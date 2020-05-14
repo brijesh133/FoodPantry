@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "dashboard/shared_links.html" %}
+    <title>Provider</title>
+</head>
+<body>
+    {% include "dashboard/navigation_bar.html" %}
+    <br><br>
+<h1>Provider Details</h1>
+<p>Provider Username : {{donor_details.donor_name}}</p>
+<p>Provider Name : {{donor_details.user_name}}</p>
+<p>Provider Status : {{donor_details.donor_status}}</p>
+{% if donor_details.anonymus_status %}
+<p>Provider Anonymous Status : Anonymous Donor</p>
+{% else %}
+<p>Provider Anonymous Status : Known Donor</p>
+{% endif %}
+
+
+
+
+</body>
+</html> 

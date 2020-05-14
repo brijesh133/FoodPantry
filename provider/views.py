@@ -8,6 +8,8 @@ from django.contrib.auth.decorators import login_required
 from provider.serializers import *
 from rest_framework import viewsets
 from rest_framework import permissions
+from inventory.models import inventory
+from checkout.models import checkout
 
 class ProviderViewSet(viewsets.ModelViewSet):
  queryset = provider.objects.all()
@@ -28,21 +30,69 @@ def provider_view(request):
     donor_data = provider_form()
     if (request.method=="POST"):
             donor_data = provider_form(request.POST)
+            print("donor_data.is_valid(): ", donor_data.is_valid())     
     if donor_data.is_valid():
             name = donor_data.cleaned_data["donor_name"]
             d_status = donor_data.cleaned_data["donor_status"]
             u_name = donor_data.cleaned_data["user_name"]
             a_status = donor_data.cleaned_data["anonymus_status"]
-            newProvider = provider()
-            newProvider.donor_name = name
-            newProvider.donor_status = d_status
-            newProvider.user_name = u_name
-            newProvider.anonymus_status = a_status
-            newProvider.save()
+            print("I am here in provider")
+            checkExists = CheckIfExists(name)
+            if checkExists:
+                return HttpResponse("Username already exists, try with different username!")
+            else:
+                newProvider = provider()
+                newProvider.donor_name = name
+                newProvider.donor_status = d_status
+                newProvider.user_name = u_name
+                newProvider.anonymus_status = a_status
+                newProvider.save()
 
 
     context = {'donor':donor,'donor_data':donor_data}
     return render(request, 'provider/provider.html',context)
+
+
+
+
+
+def details(request,pk):
+    donor_details = provider.objects.get(donor_name=pk)
+    inventory_details = inventory.objects.filter(donor=pk)
+    print("inventory_details", inventory_details)
+    checkout_details = checkout.objects.filter(donor=pk)
+    print("checkout_details", checkout_details)
+    context = {"donor_details": donor_details}
+    return render(request, 'provider/Details.html', context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def CheckIfExists(u_name):
+    provider_objects = provider.objects.all()
+    for x in provider_objects:
+        if x.donor_name == u_name:
+            return True
+    return False
+
+
+
+
+
 
 @login_required(login_url='/login/')
 def update_pro(request, pk):
