@@ -24,7 +24,6 @@
   <br>
    <ul>
       	<li>We created a new Django project and the required apps for it, i.e dashboard, waste_management, provider, inventory and impact_measurement. We started with the login and register page. After that the dashboard.html and Navigation_Bar.html to include the navigation bar, and also shared_links.html to include the various link of bootstrap.</li>
-        <li>After proper function of Login and logout, including Registration, It's time to work on the provider app. We created the edit_task page and add_task for it and also added the various functions to implement the tasks app. I also added the Hide complete Tasks checkbox as per the requirement and gave the final touches with the CSS.</li>
 
         <li>After Making a commmon CSS file for the project and one more CSS for the nav bar, Its easiler to impletmet the CSS in whole project, It also gives the uniformity to pages and the website looks very aesthetic. After completing the dashboard app, we worked the provider app, created tables and implemeted the edit and delete for provider as required for the project.
         
@@ -40,16 +39,28 @@
    <br>
    <br>
    <br>
-   <h2>About Me</h2>
+   <div class="container">
+   <h2>About Us</h2>
    <ul>
-     <li>This project was created by Devam Sharma. I'm a Grad student here at chico state majoring in computer science. I did my bachlors also in computer science from JECRC University, Jaipur. I've also done a frontend internship in my final year of bachlors, which means I also have a knowledge about the typography and color combinations which will make the website look good.
-<li>
+     <li> <b>Devam Sharma:</b> I'm a Grad student here at chico state majoring in computer science. I did my bachlors also in computer science from JECRC University, Jaipur. I've also done a frontend internship in my final year of bachlors, which means I also have a knowledge about the typography and color combinations which will make the website look good.
+
+  <li><b>Sujeet Hiramath:</b> I am a computer science graduate student studying at California State University Chico. I did my bachelor's in Computer Engineering from the University of Mumbai. I have one year of work experience as an Associate Software Engineer at FIGmd Inc. (Google Venture). I am extremely passionate about programming.</li>
+  <li><b>Chetan Sai Kurra:</b> I am Chetan Sai Kurra Grad student in Chico state computer science.
+    I have pursued my bachelor's in computer science at Amrita Vishwa Vidyapeetham in India. I am interested in software programming and Ai.</li>
+</ul>
+</div>
   {% load static %}
-  <img src="{% static 'IMG/Devam.jpg' %}" width="500" height="600">
-</li>
-     </li>
-   </ul>
- 
+  <div class="row">
+    <div class="col">
+  <img src="{% static 'IMG/Devam.jpg' %}" width="400" height="500"><p>Devam Sharma</p>
+    </div>
+    <div class="col">
+  <img src="{% static 'IMG/Sujeet.jpg' %}" width="400" height="400"><p>Sujeet Hiramath</p>
+    </div>
+    <div class="col">
+  <img src="{% static 'IMG/Chetan.jpg' %}" width="400" height="400"><p>Chetan Sai Kurra</p>
+    </div>
+</div>
     
   </div>
 
